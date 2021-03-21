@@ -1,6 +1,18 @@
-const colors = ['yellow', 'red', 'blue', 'purple', 'green'];
-document.body.style.backgroundColor = 'Blue';
+const url = "http://api.creativehandles.com/getRandomColor"
+colors = () => {
+    fetch(url)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        document.body.style.backgroundColor = data.color;
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+}
+
+
 function myFunction() {
-    const colorChange = parseInt(Math.random()*colors.length);
-    document.body.style.backgroundColor = colors[colorChange];
+    colors(Math.random * colors())
 }
